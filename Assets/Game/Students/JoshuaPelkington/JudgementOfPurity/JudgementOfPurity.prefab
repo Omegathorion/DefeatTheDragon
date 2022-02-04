@@ -610,14 +610,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3917609295817961642}
-  - component: {fileID: 1881986123243286324}
+  - component: {fileID: -3212468927084636772}
   - component: {fileID: 7632759615077219678}
   - component: {fileID: 4364346585213507428}
   - component: {fileID: 3331013561632358326}
   - component: {fileID: 5500911822674385884}
   - component: {fileID: 7632759615077219676}
   m_Layer: 0
-  m_Name: PrismaticAssault
+  m_Name: JudgementOfPurity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1881986123243286324
+--- !u!114 &-3212468927084636772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -648,14 +648,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3917609295817961636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4baa0ae9e47febe42b9d0d4d24ffe838, type: 3}
+  m_Script: {fileID: 11500000, guid: 94c1d910f3f83f24aacb6140533f78f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaCost: 2
+  manaCost: 1
   playerMana: {fileID: 11400000, guid: fd0e354444e49c5448dfb2937bba7873, type: 2}
-  title: Prismatic Assault
+  title: Judgement of Purity
   type: 0
-  description: Deal 2 Damage. Apply 2 Vulnerable, Weakness and Poison.
+  description: Deal 16 Damage. Deals 4 less damage for each status effect on the
+    target.
   manaCostText: {fileID: 3917609295501811480}
   titleText: {fileID: 3917609295929318336}
   typeText: {fileID: 3917609295417584287}
@@ -663,13 +664,8 @@ MonoBehaviour:
   cardPositioning: {fileID: 11400000, guid: a20b24714ffcdd24cbe60663aef6af7b, type: 2}
   myPlace: 1
   discardCardEvent: {fileID: 11400000, guid: deee79a1f86edf648bc6f4b76650acc3, type: 2}
-  damage: 2
-  vulnerabilityPrefab: {fileID: 6647197598793693497, guid: 5b67c65d77669324f81a1436352bf2c6, type: 3}
-  vulnerabilityAmount: 2
-  weaknessPrefab: {fileID: 6647197598793693497, guid: f8ed58b48fb30e04fa5adde65db6f994, type: 3}
-  weaknessAmount: 2
-  poisonPrefab: {fileID: 6647197598793693497, guid: a5caff94056996d4c822cb87eae52519, type: 3}
-  poisonAmount: 2
+  damage: 16
+  damageReducedPerStatus: 4
   targeterPrefab: {fileID: 4412984216297858029, guid: 362b77ac47c9fc04c9753eabe7e27454, type: 3}
   target: {fileID: 0}
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
@@ -694,7 +690,7 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881986123243286324}
+      - m_Target: {fileID: -3212468927084636772}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmDrawn
         m_Mode: 0
@@ -727,7 +723,7 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881986123243286324}
+      - m_Target: {fileID: -3212468927084636772}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmDiscarded
         m_Mode: 0
@@ -760,7 +756,7 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881986123243286324}
+      - m_Target: {fileID: -3212468927084636772}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmPutIntoTheDeck
         m_Mode: 0
@@ -793,7 +789,7 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881986123243286324}
+      - m_Target: {fileID: -3212468927084636772}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmExhausted
         m_Mode: 0

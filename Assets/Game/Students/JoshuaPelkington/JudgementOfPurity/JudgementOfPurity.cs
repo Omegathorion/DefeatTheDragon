@@ -1,18 +1,11 @@
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
-public class PrismaticAssault : Card, ITargetSingleEnemy
+public class JudgementOfPurity : Card, ITargetSingleEnemy
 {
     [Header("Damage Settings")]
-    public int damage = 2;
-
-    [Header("Status Settings")]
-    public GameObject vulnerabilityPrefab;
-    public int vulnerabilityAmount = 2;
-    public GameObject weaknessPrefab;
-    public int weaknessAmount = 2;
-    public GameObject poisonPrefab;
-    public int poisonAmount = 2;
+    public int damage = 25;
+    public int damageReducedPerStatus = 5;
 
     [Header("References")]
     public GameObject targeterPrefab;
@@ -37,10 +30,6 @@ public class PrismaticAssault : Card, ITargetSingleEnemy
                 target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
                 discardCardEvent.Raise(this.gameObject);
 
-                ApplyStatus(vulnerabilityPrefab, vulnerabilityAmount);
-                ApplyStatus(weaknessPrefab, weaknessAmount);
-                ApplyStatus(poisonPrefab, poisonAmount);
-
             }
         }
         Deinitiate();
@@ -57,23 +46,18 @@ public class PrismaticAssault : Card, ITargetSingleEnemy
         return processedManaCost;
     }
 
+    int CalculateAdjustedDamage(float initialDamage)
+    {
+        int adjustedDamage = (int)(initialDamage - (target.GetComponent<Enemy>().statuses.childCount * damageReducedPerStatus));
+        return Mathf.Clamp(adjustedDamage, 0, int.MaxValue);
+    }
+
     void ApplyDamage(int damageAmount)
     {
         currentProcessor = Instantiate(processorPrefab);
-        currentProcessor.GetComponent<InterjectionProcessor>().startingValue = damage;
+        currentProcessor.GetComponent<InterjectionProcessor>().startingValue = CalculateAdjustedDamage(damage);
         CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, target, InteractionType.Damage, currentProcessor.GetComponent<InterjectionProcessor>());
         interjectionEvent.Raise(currentInterjection);
-    }
-
-    void ApplyStatus(GameObject statusPrefab, int statusAmount)
-    {
-        GameObject statusInstance = Instantiate(statusPrefab);
-        GameObject statusProcessor = Instantiate(processorPrefab);
-        statusProcessor.GetComponent<InterjectionProcessor>().startingValue = statusAmount;
-        interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, statusProcessor.GetComponent<InterjectionProcessor>()));
-        statusInstance.GetComponent<Status>().duration = statusProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
-        Destroy(statusProcessor);
-        target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, statusInstance);
     }
 
     public void Deinitiate()
