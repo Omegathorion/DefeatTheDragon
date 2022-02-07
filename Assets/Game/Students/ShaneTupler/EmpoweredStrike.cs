@@ -6,7 +6,7 @@ using ScriptableObjectArchitecture;
 public class EmpoweredStrike : Card, ITargetSingleEnemy
 {
     [Header("Empower")]
-    public static int cardsPlayedThisTurn; // Will update later
+    public int cardsPlayedThisTurn;
     public int damagePerCard;
     public int damage;
 
@@ -81,12 +81,12 @@ public class EmpoweredStrike : Card, ITargetSingleEnemy
         }
     }
 
-    public static void OnCardPlayed()
+    public void OnCardPlayed()
     {
         cardsPlayedThisTurn++;
     }
 
-    public static void OnTurnStart()
+    public void OnTurnStart()
     {
         cardsPlayedThisTurn = 0;
     }

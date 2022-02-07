@@ -45,7 +45,6 @@ public class Card : MonoBehaviour
             myPlace = CardPlace.Discard;
         }
         MoveToTheCorrectPositionInHand();
-        EmpoweredStrike.OnCardPlayed(); // Temp
     }
 
     public void WhenIAmPutIntoTheDeck(GameObject whichCardWasPutIntoTheDeck)
