@@ -22,6 +22,7 @@ public class Card : MonoBehaviour
     
     public CardPlace myPlace;
     public GameObjectGameEvent discardCardEvent;
+    public GameObjectGameEvent cardPlayedEvent;
 
     private void Start()
     {

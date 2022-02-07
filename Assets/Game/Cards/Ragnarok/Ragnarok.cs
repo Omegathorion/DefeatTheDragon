@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class Defend : Card, ITargetSingleEnemy
+public class Ragnarok : Card, ITargetAllEnemies
 {
+    public int damage;
+    public int damageInstanceCount;
     public GameObject targeterPrefab;
     private GameObject currentTargeter;
+    public List<GameObject> targets = new List<GameObject>();
     public GameObject target;
 
     public GameObject processorPrefab;
     private GameObject currentProcessor;
     public CallForInterjectionsGameEvent interjectionEvent;
 
-    public GameObject blockPrefab;
-    public int blockAmount;
-
     public override void OnMouseUp()
     {
         if (target == null)
         {
-
         }
         else
         {
@@ -30,12 +29,9 @@ public class Defend : Card, ITargetSingleEnemy
             int processedManaCost = manaProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
             if (playerMana >= processedManaCost)
             {
-                GameObject currentBlockObject = Instantiate(blockPrefab);
-                currentBlockObject.GetComponent<Block>().duration = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
-                target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentBlockObject);
+                target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
-                cardPlayedEvent.Raise(this.gameObject);
             }
             else
             {
@@ -71,10 +67,10 @@ public class Defend : Card, ITargetSingleEnemy
         }
     }
 
-    public void ReceiveSingleEnemyTarget(GameObject receivedTarget)
+    public void ReceiveAllEnemyTargets(List<GameObject> receivedTargets)
     {
-        target = receivedTarget;
-        if (receivedTarget == null)
+        targets = receivedTargets;
+        if (receivedTargets == null)
         {
             if (currentProcessor != null)
             {
@@ -84,8 +80,8 @@ public class Defend : Card, ITargetSingleEnemy
         else
         {
             currentProcessor = GameObject.Instantiate(processorPrefab);
-            currentProcessor.GetComponent<InterjectionProcessor>().startingValue = blockAmount;
-            CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, target, InteractionType.Block, currentProcessor.GetComponent<InterjectionProcessor>());
+            currentProcessor.GetComponent<InterjectionProcessor>().startingValue = damage;
+            CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, target, InteractionType.Damage, currentProcessor.GetComponent<InterjectionProcessor>());
             interjectionEvent.Raise(currentInterjection);
         }
     }

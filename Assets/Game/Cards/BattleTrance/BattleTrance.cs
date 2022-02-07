@@ -44,6 +44,7 @@ public class BattleTrance : Card, ITargetSingleEnemy
 
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
+                cardPlayedEvent.Raise(this.gameObject);
             }
             else
             {
