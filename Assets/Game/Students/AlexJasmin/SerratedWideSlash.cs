@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class SerratedWideSlash : Card, ITargetSingleEnemy
+public class SerratedWideSlash : Card, ITargetAllEnemies
 {
     public int damage;
     public GameObject targeterPrefab;
     private GameObject currentTargeter;
-    public GameObject target;
+    public List<GameObject> targets = new List<GameObject>();
 
     public GameObject processorPrefab;
-    private GameObject currentProcessor;
+    private List<GameObject> currentProcessors = new List<GameObject>();
     public CallForInterjectionsGameEvent interjectionEvent;
 
     public GameObject weakenPrefab;
@@ -19,7 +19,7 @@ public class SerratedWideSlash : Card, ITargetSingleEnemy
 
     public override void OnMouseUp()
     {
-        if (target == null)
+        if (targets.Count == 0)
         {
         }
         else
@@ -30,17 +30,22 @@ public class SerratedWideSlash : Card, ITargetSingleEnemy
             int processedManaCost = manaProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
             if (playerMana >= processedManaCost)
             {
-                target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
                 playerMana.Value -= processedManaCost;
-                discardCardEvent.Raise(this.gameObject);
 
-                GameObject instantiatedVulnerability = Instantiate(weakenPrefab);
-                GameObject vulnerabilityProcessor = Instantiate(processorPrefab);
-                vulnerabilityProcessor.GetComponent<InterjectionProcessor>().startingValue = weakenAmount;
-                interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, vulnerabilityProcessor.GetComponent<InterjectionProcessor>()));
-                instantiatedVulnerability.GetComponent<Status>().duration = vulnerabilityProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
-                Destroy(vulnerabilityProcessor);
-                target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedVulnerability);
+                foreach (GameObject target in targets)
+                {
+                    target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessors[targets.IndexOf(target)].GetComponent<InterjectionProcessor>().CalculateFinalValue());
+
+                    GameObject instantiatedweakening = Instantiate(weakenPrefab);
+                    GameObject weakeningProcessor = Instantiate(processorPrefab);
+                    weakeningProcessor.GetComponent<InterjectionProcessor>().startingValue = weakenAmount;
+                    interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, weakeningProcessor.GetComponent<InterjectionProcessor>()));
+                    instantiatedweakening.GetComponent<Status>().duration = weakeningProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                    Destroy(weakeningProcessor);
+                    target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedweakening);
+                }
+
+                discardCardEvent.Raise(this.gameObject);
             }
             else
             {
@@ -57,13 +62,16 @@ public class SerratedWideSlash : Card, ITargetSingleEnemy
         {
             Destroy(currentTargeter);
         }
-        if (currentProcessor != null)
+        if (currentProcessors.Count != 0)
         {
-            Destroy(currentProcessor);
+            foreach (GameObject eachProcessor in currentProcessors)
+            {
+                Destroy(eachProcessor);
+            }
         }
         currentTargeter = null;
-        currentProcessor = null;
-        target = null;
+        currentProcessors.Clear();
+        targets.Clear();
     }
 
     public override void OnMouseDown()
@@ -76,7 +84,7 @@ public class SerratedWideSlash : Card, ITargetSingleEnemy
         }
     }
 
-    public void ReceiveSingleEnemyTarget(GameObject receivedTarget)
+    /*public void ReceiveSingleEnemyTarget(GameObject receivedTarget)
     {
         target = receivedTarget;
         if (receivedTarget == null)
@@ -92,6 +100,41 @@ public class SerratedWideSlash : Card, ITargetSingleEnemy
             currentProcessor.GetComponent<InterjectionProcessor>().startingValue = damage;
             CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, target, InteractionType.Damage, currentProcessor.GetComponent<InterjectionProcessor>());
             interjectionEvent.Raise(currentInterjection);
+        }
+    }*/
+
+    public void ReceiveAllEnemyTargets(List<GameObject> receivedTargets)
+    {
+        targets = receivedTargets;
+        if (receivedTargets.Count == 0)
+        {
+            if (currentProcessors.Count != 0)
+            {
+                foreach (GameObject eachProcessor in currentProcessors)
+                {
+                    Destroy(eachProcessor);
+                }
+                currentProcessors.Clear();
+            }
+        }
+        else
+        {
+            if (currentProcessors.Count != 0)
+            {
+                foreach (GameObject eachProcessor in currentProcessors)
+                {
+                    Destroy(eachProcessor);
+                }
+                currentProcessors.Clear();
+            }
+            foreach (GameObject eachTarget in receivedTargets)
+            {
+                GameObject currentProcessor = GameObject.Instantiate(processorPrefab);
+                currentProcessor.GetComponent<InterjectionProcessor>().startingValue = damage;
+                CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, eachTarget, InteractionType.Damage, currentProcessor.GetComponent<InterjectionProcessor>());
+                interjectionEvent.Raise(currentInterjection);
+                currentProcessors.Add(currentProcessor);
+            }
         }
     }
 }

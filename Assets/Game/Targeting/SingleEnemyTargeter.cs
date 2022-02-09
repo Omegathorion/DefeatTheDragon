@@ -5,6 +5,7 @@ using UnityEngine;
 public class SingleEnemyTargeter : Targeter
 {
     public LineRenderer myLine;
+    public LayerMask enemyLayer;
 
     void Update()
     {

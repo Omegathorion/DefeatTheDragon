@@ -1,15 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Weakness : Status
 {
-    public float multiplier = 0.75f;
+    public float multiplier;
 
     public void ReceiveInterjectionCall(CallForInterjections receivedCall)
     {
-        if (receivedCall.target == statusOwner)
+        if (receivedCall.initiator.transform.root.gameObject == statusOwner)
         {
-            //Not Yet Implemented
-            if (receivedCall.typeOfInteraction == InteractionType.Status)
+            if (receivedCall.typeOfInteraction == InteractionType.Damage)
             {
-
+                receivedCall.processor.ReceiveMultiplier(this.gameObject, multiplier);
             }
         }
     }

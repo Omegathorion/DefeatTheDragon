@@ -49,7 +49,7 @@ MonoBehaviour:
   statusOwner: {fileID: 0}
   onStatusApplied: {fileID: 11400000, guid: 84a25c5e4bbe2184096b3bd9ed0656b0, type: 2}
   onStatusUpdated: {fileID: 11400000, guid: 451d5adc5e0d5234daaf5d476b4d8a38, type: 2}
-  multiplier: 0.75
+  multiplier: -0.25
 --- !u!114 &-5328357280953128036
 MonoBehaviour:
   m_ObjectHideFlags: 0
