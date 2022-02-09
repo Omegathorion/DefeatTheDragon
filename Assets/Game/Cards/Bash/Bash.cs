@@ -39,7 +39,7 @@ public class Bash : Card, ITargetSingleEnemy
                 GameObject vulnerabilityProcessor = Instantiate(processorPrefab);
                 vulnerabilityProcessor.GetComponent<InterjectionProcessor>().startingValue = vulnerabilityAmount;
                 interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, vulnerabilityProcessor.GetComponent<InterjectionProcessor>()));
-                instantiatedVulnerability.GetComponent<Status>().duration = vulnerabilityProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                instantiatedVulnerability.GetComponent<Status>().value = vulnerabilityProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 Destroy(vulnerabilityProcessor);
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedVulnerability);
             }

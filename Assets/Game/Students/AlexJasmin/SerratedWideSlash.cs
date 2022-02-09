@@ -40,7 +40,7 @@ public class SerratedWideSlash : Card, ITargetAllEnemies
                     GameObject weakeningProcessor = Instantiate(processorPrefab);
                     weakeningProcessor.GetComponent<InterjectionProcessor>().startingValue = weakenAmount;
                     interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, weakeningProcessor.GetComponent<InterjectionProcessor>()));
-                    instantiatedweakening.GetComponent<Status>().duration = weakeningProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                    instantiatedweakening.GetComponent<Status>().value = weakeningProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                     Destroy(weakeningProcessor);
                     target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedweakening);
                 }

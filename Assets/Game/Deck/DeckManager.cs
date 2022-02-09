@@ -12,6 +12,7 @@ public class DeckManager : MonoBehaviour
 
     public GameObjectGameEvent drawCardEvent;
     public GameObjectGameEvent putCardBackIntoDrawPileEvent;
+    public GameObjectGameEvent discardCardEvent;
 
     void Start()
     {
@@ -62,5 +63,15 @@ public class DeckManager : MonoBehaviour
     public void ShuffleAllCardsBackToDeck()
     {
 
+    }
+
+    public void DiscardAllCardsInHand()
+    {
+        foreach (Card eachCard in hand.GetComponentsInChildren<Card>()) 
+        {
+            GameObject cardFromHand = eachCard.gameObject;
+            cardFromHand.transform.parent = discard;
+            discardCardEvent.Raise(cardFromHand);
+        }
     }
 }

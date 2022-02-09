@@ -31,7 +31,7 @@ public class Defend : Card, ITargetSingleEnemy
             if (playerMana >= processedManaCost)
             {
                 GameObject currentBlockObject = Instantiate(blockPrefab);
-                currentBlockObject.GetComponent<Block>().duration = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                currentBlockObject.GetComponent<Block>().value = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentBlockObject);
                 playerMana.Value -= processedManaCost;
                 cardPlayedEvent.Raise(this.gameObject);

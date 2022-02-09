@@ -9,14 +9,6 @@ public class DefaultPlayerManaGainAtStartOfTurn : MonoBehaviour
     public int amountOfManaThePlayerStartsEachTurnWith;
 
 
-    public GameEvent startPlayerTurn;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            startPlayerTurn.Raise();
-        }
-    }
     public void OnPlayerTurnStart()
     {
         playerManaVariable.Value = amountOfManaThePlayerStartsEachTurnWith;

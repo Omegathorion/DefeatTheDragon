@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548c326c94f76a4fbaaeec1b5e123a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
+  value: 0
   statusOwner: {fileID: 0}
   onStatusApplied: {fileID: 11400000, guid: 84a25c5e4bbe2184096b3bd9ed0656b0, type: 2}
   onStatusUpdated: {fileID: 11400000, guid: 451d5adc5e0d5234daaf5d476b4d8a38, type: 2}
@@ -71,7 +71,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -654476348636042137}
         m_TargetAssemblyTypeName: Poison, Assembly-CSharp
-        m_MethodName: OnEndOfPlayerTurn
+        m_MethodName: DecreaseValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,8 +1,8 @@
 public class Poison : Status
 {
-    public void OnEndOfPlayerTurn()
+    public override void DecreaseValue()
     {
-        //Get a processor to figure out how much damage I will do
-        //Deal piercing damage to my owner
+        statusOwner.GetComponent<ITakeDamage>().TakePiercingDamage(gameObject, value);
+        base.DecreaseValue();
     }
 }

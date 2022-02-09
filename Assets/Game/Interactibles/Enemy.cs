@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
 {
@@ -15,12 +16,12 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
         {
             Block currentBlock = statuses.GetComponentInChildren<Block>();
             int currentBlockAmount = processingAmount;
-            if (processingAmount > currentBlock.duration)
+            if (processingAmount > currentBlock.value)
             {
-                currentBlockAmount = currentBlock.duration;
+                currentBlockAmount = currentBlock.value;
             }
             processingAmount -= currentBlockAmount;
-            currentBlock.duration -= currentBlockAmount;
+            currentBlock.value -= currentBlockAmount;
         }
 
         currentHealth -= processingAmount;
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
             if (eachStatus.gameObject.name == receivedStatus.name)
             {
                 doesThisStatusAlreadyExist = true;
-                eachStatus.GetComponent<Status>().duration += receivedStatus.GetComponent<Status>().duration;
+                eachStatus.GetComponent<Status>().value += receivedStatus.GetComponent<Status>().value;
                 eachStatus.GetComponent<Status>().onStatusUpdated.Raise(eachStatus.gameObject);
                 Destroy(receivedStatus);
             }

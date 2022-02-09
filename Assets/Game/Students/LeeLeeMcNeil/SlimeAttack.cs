@@ -38,7 +38,7 @@ public class SlimeAttack : Card, ITargetSingleEnemy
                 GameObject slimeProcessor = Instantiate(processorPrefab);
                 slimeProcessor.GetComponent<InterjectionProcessor>().startingValue = SlimeAmount;
                 interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, slimeProcessor.GetComponent<InterjectionProcessor>()));
-                instantiatedSlime.GetComponent<Status>().duration = slimeProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                instantiatedSlime.GetComponent<Status>().value = slimeProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 Destroy(slimeProcessor);
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedSlime);
             }

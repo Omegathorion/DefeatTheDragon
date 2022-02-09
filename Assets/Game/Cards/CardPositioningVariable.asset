@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CardPositioningVariable
   m_EditorClassIdentifier: 
   _value:
-    xPositionRange: {x: -0.5, y: 0.5}
+    xPositionRange: {x: 0, y: 0}
     yPosition: -4
     xPositionIncreasePerCard: 1
   _readOnly: 1

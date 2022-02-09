@@ -39,7 +39,7 @@ public class BattleTrance : Card, ITargetSingleEnemy
                 Destroy(cardDrawProcessor);
 
                 GameObject currentPreventCardDraw = Instantiate(preventCardDrawPrefab);
-                currentPreventCardDraw.GetComponent<Status>().duration = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+                currentPreventCardDraw.GetComponent<Status>().value = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentPreventCardDraw);
 
                 playerMana.Value -= processedManaCost;

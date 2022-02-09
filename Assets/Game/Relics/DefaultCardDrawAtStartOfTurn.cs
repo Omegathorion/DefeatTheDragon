@@ -11,14 +11,6 @@ public class DefaultCardDrawAtStartOfTurn : MonoBehaviour
     private GameObject currentProcessor;
     public CallForInterjectionsGameEvent callForInterjections;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            DrawCards();
-        }
-    }
-
     public void OnPlayerTurnStart()
     {
         DrawCards();

@@ -78,7 +78,7 @@ public class PrismaticAssault : Card, ITargetSingleEnemy
         GameObject statusProcessor = Instantiate(processorPrefab);
         statusProcessor.GetComponent<InterjectionProcessor>().startingValue = statusAmount;
         interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, statusProcessor.GetComponent<InterjectionProcessor>()));
-        statusInstance.GetComponent<Status>().duration = statusProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+        statusInstance.GetComponent<Status>().value = statusProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
         Destroy(statusProcessor);
         target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, statusInstance);
     }

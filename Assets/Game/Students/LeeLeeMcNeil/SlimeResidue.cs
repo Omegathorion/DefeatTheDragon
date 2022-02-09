@@ -12,7 +12,7 @@ public class SlimeResidue : Status
         {
             if (receivedCall.typeOfInteraction == InteractionType.Damage)
             {
-                receivedCall.processor.ReceiveAdder(this.gameObject, slimedmg * duration);
+                receivedCall.processor.ReceiveAdder(this.gameObject, slimedmg * value);
 
             }
         }
