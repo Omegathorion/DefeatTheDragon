@@ -25,14 +25,20 @@ public class JudgementOfPurity : Card, ITargetSingleEnemy
 
             if (playerMana >= manaCost)
             {
-                playerMana.Value -= manaCost;
-
-                target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
-                discardCardEvent.Raise(this.gameObject);
-
+                PlayCard();
             }
         }
         Deinitiate();
+    }
+
+    void PlayCard()
+    {
+        playerMana.Value -= manaCost;
+
+        target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+
+        cardPlayedEvent.Raise(gameObject);
+        discardCardEvent.Raise(gameObject);
     }
 
     int CheckMana()

@@ -270,7 +270,7 @@ MonoBehaviour:
   cardPositioning: {fileID: 11400000, guid: a20b24714ffcdd24cbe60663aef6af7b, type: 2}
   myPlace: 0
   discardCardEvent: {fileID: 11400000, guid: deee79a1f86edf648bc6f4b76650acc3, type: 2}
-  cardPlayedEvent: {fileID: 0}
+  cardPlayedEvent: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
   damage: 10
   targeterPrefab: {fileID: 995810480220156987, guid: 6b1761e2fa76c774b9b2597aa8dce6f4, type: 3}
   targets: []
