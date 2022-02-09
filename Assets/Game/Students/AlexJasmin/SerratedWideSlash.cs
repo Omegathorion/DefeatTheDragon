@@ -44,7 +44,7 @@ public class SerratedWideSlash : Card, ITargetAllEnemies
                     Destroy(weakeningProcessor);
                     target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedweakening);
                 }
-
+                cardPlayedEvent.Raise(gameObject);
                 discardCardEvent.Raise(this.gameObject);
             }
             else
