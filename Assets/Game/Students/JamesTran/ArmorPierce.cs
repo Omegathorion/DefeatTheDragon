@@ -27,7 +27,7 @@ public class ArmorPierce : Card, ITargetSingleEnemy
             int processedManaCost = manaProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
             if (playerMana >= processedManaCost)
             {
-                target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+                target.GetComponent<ITakeDamage>().TakePiercingDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
                 cardPlayedEvent.Raise(this.gameObject);

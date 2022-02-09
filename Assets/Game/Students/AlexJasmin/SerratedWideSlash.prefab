@@ -273,7 +273,7 @@ MonoBehaviour:
   cardPlayedEvent: {fileID: 0}
   damage: 10
   targeterPrefab: {fileID: 995810480220156987, guid: 6b1761e2fa76c774b9b2597aa8dce6f4, type: 3}
-  target: {fileID: 0}
+  targets: []
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
   weakenPrefab: {fileID: 6647197598793693497, guid: f8ed58b48fb30e04fa5adde65db6f994, type: 3}

@@ -1,14 +1,8 @@
 public class Poison : Status
 {
-    public void ReceiveInterjectionCall(CallForInterjections receivedCall)
+    public void OnEndOfPlayerTurn()
     {
-        if (receivedCall.target == statusOwner)
-        {
-            //Not Yet Implemented
-            if (receivedCall.typeOfInteraction == InteractionType.Status)
-            {
-
-            }
-        }
+        //Get a processor to figure out how much damage I will do
+        //Deal piercing damage to my owner
     }
 }

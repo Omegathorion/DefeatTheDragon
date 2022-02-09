@@ -567,8 +567,9 @@ GameObject:
   - component: {fileID: -5862510311373985684}
   - component: {fileID: 4327757867079745726}
   - component: {fileID: 6801070809246524628}
+  - component: {fileID: -3782234694929888900}
   m_Layer: 0
-  m_Name: Card01_SamuelArcaro_FinalResort
+  m_Name: FinalResort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,6 +615,7 @@ MonoBehaviour:
   cardPositioning: {fileID: 11400000, guid: a20b24714ffcdd24cbe60663aef6af7b, type: 2}
   myPlace: 1
   discardCardEvent: {fileID: 11400000, guid: deee79a1f86edf648bc6f4b76650acc3, type: 2}
+  cardPlayedEvent: {fileID: 0}
   damage: 50
   targeterPrefab: {fileID: 4412984216297858029, guid: 362b77ac47c9fc04c9753eabe7e27454, type: 3}
   target: {fileID: 0}
@@ -655,19 +657,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3165259382169835124}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmDrawn
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3165259382169835124}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: MoveToTheCorrectPositionInHand
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -700,19 +690,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3165259382169835124}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmDiscarded
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3165259382169835124}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: MoveToTheCorrectPositionInHand
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -745,10 +723,10 @@ MonoBehaviour:
       - m_Target: {fileID: 3165259382169835124}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmPutIntoTheDeck
-        m_Mode: 2
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -778,16 +756,53 @@ MonoBehaviour:
       - m_Target: {fileID: 3165259382169835124}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
         m_MethodName: WhenIAmExhausted
-        m_Mode: 2
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
+--- !u!114 &-3782234694929888900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624278154047737772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b560abbe45f99f449abc2edafc2bb52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3165259382169835124}
+        m_TargetAssemblyTypeName: FinalResort, Assembly-CSharp
+        m_MethodName: ReceiveInterjectionCall
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue:
+    initiator: {fileID: 0}
+    target: {fileID: 0}
+    typeOfInteraction: 0
+    processor: {fileID: 0}
 --- !u!1 &2624278154592184407
 GameObject:
   m_ObjectHideFlags: 0

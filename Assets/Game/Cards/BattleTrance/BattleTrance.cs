@@ -43,8 +43,8 @@ public class BattleTrance : Card, ITargetSingleEnemy
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentPreventCardDraw);
 
                 playerMana.Value -= processedManaCost;
-                discardCardEvent.Raise(this.gameObject);
                 cardPlayedEvent.Raise(this.gameObject);
+                discardCardEvent.Raise(this.gameObject);
             }
             else
             {

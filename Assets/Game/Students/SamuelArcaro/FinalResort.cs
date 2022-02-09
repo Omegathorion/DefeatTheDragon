@@ -28,7 +28,7 @@ public class FinalResort : Card, ITargetSingleEnemy
             if (playerMana >= processedManaCost)
             {
                 ITakeDamage dmg = target.GetComponent<ITakeDamage>();
-				dmg.TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+				dmg.TakePiercingDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
 				
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
@@ -40,7 +40,7 @@ public class FinalResort : Card, ITargetSingleEnemy
 					GameObject playerObj = GameObject.Find("Player");
 					if (playerObj != null) {
 						dmg = playerObj.GetComponent<ITakeDamage>();
-						dmg.TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+						dmg.TakePiercingDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
 					}
 				}
             }
@@ -94,6 +94,17 @@ public class FinalResort : Card, ITargetSingleEnemy
             currentProcessor.GetComponent<InterjectionProcessor>().startingValue = damage;
             CallForInterjections currentInterjection = new CallForInterjections(this.gameObject, target, InteractionType.Damage, currentProcessor.GetComponent<InterjectionProcessor>());
             interjectionEvent.Raise(currentInterjection);
+        }
+    }
+
+    public void ReceiveInterjectionCall(CallForInterjections receivedCall)
+    {
+        if (receivedCall.initiator == this.gameObject)
+        {
+            if (receivedCall.typeOfInteraction == InteractionType.Damage)
+            {
+                receivedCall.processor.ReceiveSetter(gameObject, damage);
+            }
         }
     }
 }

@@ -29,8 +29,8 @@ public class Strike : Card, ITargetSingleEnemy
             {
                 target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
                 playerMana.Value -= processedManaCost;
-                discardCardEvent.Raise(this.gameObject);
                 cardPlayedEvent.Raise(this.gameObject);
+                discardCardEvent.Raise(this.gameObject);
             }
             else
             {

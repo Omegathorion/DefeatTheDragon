@@ -272,8 +272,9 @@ GameObject:
   - component: {fileID: 1881478437488636235}
   - component: {fileID: 7547185536842636149}
   - component: {fileID: -6116792318695474525}
+  - component: {fileID: 6234298374381367781}
   m_Layer: 0
-  m_Name: Empowered Strike
+  m_Name: EmpoweredStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 4821236348813205023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4821236348943045749}
@@ -320,6 +321,7 @@ MonoBehaviour:
   myPlace: 1
   discardCardEvent: {fileID: 11400000, guid: deee79a1f86edf648bc6f4b76650acc3, type: 2}
   cardPlayedEvent: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
+  cardsPlayedThisTurn: 0
   damagePerCard: 2
   damage: 4
   targeterPrefab: {fileID: 4412984216297858029, guid: 362b77ac47c9fc04c9753eabe7e27454, type: 3}
@@ -491,6 +493,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
+--- !u!65 &6234298374381367781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821236348813205023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 8, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4821236348934141286
 GameObject:
   m_ObjectHideFlags: 0

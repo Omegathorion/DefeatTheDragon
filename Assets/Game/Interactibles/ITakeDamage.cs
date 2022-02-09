@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ITakeDamage
 {
     public void TakeDamage(GameObject receivedDamager, int receivedAmount);
+    public void TakePiercingDamage(GameObject receiveDamager, int receivedAmount);
 }

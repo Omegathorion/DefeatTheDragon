@@ -26,6 +26,11 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
         currentHealth -= processingAmount;
     }
 
+    public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
+    {
+        currentHealth -= receivedAmount;
+    }
+
     public void TakeStatus(GameObject receivedInflicter, GameObject receivedStatus)
     {
         //Check to see if this status already exists

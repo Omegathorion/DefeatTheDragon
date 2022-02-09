@@ -34,8 +34,8 @@ public class Defend : Card, ITargetSingleEnemy
                 currentBlockObject.GetComponent<Block>().duration = currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentBlockObject);
                 playerMana.Value -= processedManaCost;
-                discardCardEvent.Raise(this.gameObject);
                 cardPlayedEvent.Raise(this.gameObject);
+                discardCardEvent.Raise(this.gameObject);
             }
             else
             {
