@@ -32,18 +32,25 @@ public class PrismaticAssault : Card, ITargetSingleEnemy
 
             if (playerMana >= manaCost)
             {
-                playerMana.Value -= manaCost;
-
-                target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
-                discardCardEvent.Raise(this.gameObject);
-
-                ApplyStatus(vulnerabilityPrefab, vulnerabilityAmount);
-                ApplyStatus(weaknessPrefab, weaknessAmount);
-                ApplyStatus(poisonPrefab, poisonAmount);
-
+                PlayCard();
             }
         }
         Deinitiate();
+    }
+
+    void PlayCard()
+    {
+        playerMana.Value -= manaCost;
+
+        target.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+
+        ApplyStatus(vulnerabilityPrefab, vulnerabilityAmount);
+        ApplyStatus(weaknessPrefab, weaknessAmount);
+        ApplyStatus(poisonPrefab, poisonAmount);
+
+        cardPlayedEvent.Raise(gameObject);
+        discardCardEvent.Raise(gameObject);
+
     }
 
     int CheckMana()
