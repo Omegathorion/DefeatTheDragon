@@ -9,7 +9,7 @@ public class Weakness : Status
             //Not Yet Implemented
             if (receivedCall.typeOfInteraction == InteractionType.Status)
             {
-                receivedCall.processor.ReceiveMultiplier(this.gameObject, multiplier);
+
             }
         }
     }
