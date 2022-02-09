@@ -47,6 +47,7 @@ public class SplashStrike : Card, ITargetSingleEnemy
                     }
                 }
                 playerMana.Value -= processedManaCost;
+                cardPlayedEvent.Raise(this.gameObject);
                 discardCardEvent.Raise(this.gameObject);
             }
             else
