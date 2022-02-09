@@ -663,6 +663,7 @@ MonoBehaviour:
   cardPositioning: {fileID: 11400000, guid: a20b24714ffcdd24cbe60663aef6af7b, type: 2}
   myPlace: 1
   discardCardEvent: {fileID: 11400000, guid: deee79a1f86edf648bc6f4b76650acc3, type: 2}
+  cardPlayedEvent: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
   damage: 2
   vulnerabilityPrefab: {fileID: 6647197598793693497, guid: 5b67c65d77669324f81a1436352bf2c6, type: 3}
   vulnerabilityAmount: 2
