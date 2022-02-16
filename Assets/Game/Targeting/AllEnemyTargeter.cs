@@ -19,7 +19,7 @@ public class AllEnemyTargeter : Targeter
         {
             if (!amITargetingAnythingRightNow)
             {
-                gameObject.GetComponent<Collider>().enabled = true;
+                DetectEnemies();
                 amITargetingAnythingRightNow = true;
             }
         }
@@ -28,19 +28,20 @@ public class AllEnemyTargeter : Targeter
             if (amITargetingAnythingRightNow)
             {
                 amITargetingAnythingRightNow = false;
-                gameObject.GetComponent<Collider>().enabled = false;
                 targets.Clear();
                 requester.GetComponent<ITargetAllEnemies>().ReceiveAllEnemyTargets(targets);
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void DetectEnemies()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        targets.Clear();
+        Collider[] allHits = Physics.OverlapBox(Vector3.zero, Vector3.one * 100.0f, Quaternion.identity, enemyLayer, QueryTriggerInteraction.Collide);
+        foreach (Collider eachHit in allHits)
         {
-            targets.Add(other.gameObject);
-            requester.GetComponent<ITargetAllEnemies>().ReceiveAllEnemyTargets(targets);
+            targets.Add(eachHit.gameObject);
         }
+        requester.GetComponent<ITargetAllEnemies>().ReceiveAllEnemyTargets(targets);
     }
 }

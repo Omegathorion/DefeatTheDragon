@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using TMPro;
 
 public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
 {
     public int currentHealth;
     public int maxHealth;
     public Transform statuses;
+    public TextMeshPro healthTextDisplay;
+
+    void Start()
+    {
+        UpdateHealthDisplay();
+    }
+
+    void UpdateHealthDisplay()
+    {
+        healthTextDisplay.text = currentHealth.ToString();
+    }
 
     public void TakeDamage(GameObject receivedDamager, int receivedAmount)
     {
@@ -25,11 +37,13 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
         }
 
         currentHealth -= processingAmount;
+        healthTextDisplay.text = currentHealth.ToString();
     }
 
     public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
     {
         currentHealth -= receivedAmount;
+        healthTextDisplay.text = currentHealth.ToString();
     }
 
     public void TakeStatus(GameObject receivedInflicter, GameObject receivedStatus)

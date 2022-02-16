@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using System;
+using System.Linq;
+using System.Security.Cryptography;
 
 public class DeckManager : MonoBehaviour
 {
@@ -16,7 +19,7 @@ public class DeckManager : MonoBehaviour
 
     void Start()
     {
-        
+        //ShuffleDeck();
     }
 
     void Update()
@@ -58,11 +61,29 @@ public class DeckManager : MonoBehaviour
             cardFromDiscard.transform.parent = deck;
             putCardBackIntoDrawPileEvent.Raise(cardFromDiscard);
         }
+        ShuffleDeck();
     }
 
     public void ShuffleAllCardsBackToDeck()
     {
+        ShuffleDeck();
+    }
 
+    public void ShuffleDeck()
+    {
+        int[] cardsInDeck = new int[deck.childCount];
+        for (int index = 0; index < cardsInDeck.Length; index++)
+        {
+            cardsInDeck[index] = index;
+        }
+        System.Random random = new System.Random();
+        cardsInDeck = cardsInDeck.OrderBy(x => random.Next()).ToArray();
+        int currentCardIndex = 0;
+        foreach (Card eachCard in deck.GetComponentsInChildren<Card>())
+        {
+            eachCard.transform.SetSiblingIndex(cardsInDeck[currentCardIndex]);
+            currentCardIndex++;
+        }
     }
 
     public void DiscardAllCardsInHand()

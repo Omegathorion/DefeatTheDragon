@@ -266,6 +266,7 @@ MonoBehaviour:
   currentHealth: 10
   maxHealth: 10
   statuses: {fileID: 8510403272257261378}
+  healthTextDisplay: {fileID: 9209919068665757202}
 --- !u!1 &8510403272529090203
 GameObject:
   m_ObjectHideFlags: 0
