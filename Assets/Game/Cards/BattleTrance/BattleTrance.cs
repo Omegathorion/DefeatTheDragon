@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class BattleTrance : Card, ITargetSingleEnemy
+public class BattleTrance : Card, ITargetPlayer
 {
     public GameObject targeterPrefab;
     private GameObject currentTargeter;
@@ -80,7 +80,7 @@ public class BattleTrance : Card, ITargetSingleEnemy
         }
     }
 
-    public void ReceiveSingleEnemyTarget(GameObject receivedTarget)
+    public void ReceivePlayerTarget(GameObject receivedTarget)
     {
         target = receivedTarget;
         if (receivedTarget == null)

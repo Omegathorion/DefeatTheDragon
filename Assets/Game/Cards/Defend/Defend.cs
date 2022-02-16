@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class Defend : Card, ITargetSingleEnemy
+public class Defend : Card, ITargetPlayer
 {
     public GameObject targeterPrefab;
     private GameObject currentTargeter;
@@ -71,7 +71,7 @@ public class Defend : Card, ITargetSingleEnemy
         }
     }
 
-    public void ReceiveSingleEnemyTarget(GameObject receivedTarget)
+    public void ReceivePlayerTarget(GameObject receivedTarget)
     {
         target = receivedTarget;
         if (receivedTarget == null)
