@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d60008c16856148bcb992212fedce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 5
+  animationTime: 2
   attackName: Puncture2
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}

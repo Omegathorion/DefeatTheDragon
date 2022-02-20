@@ -16,6 +16,7 @@ public class DeckManager : MonoBehaviour
     public GameObjectGameEvent drawCardEvent;
     public GameObjectGameEvent putCardBackIntoDrawPileEvent;
     public GameObjectGameEvent discardCardEvent;
+    public GameEvent onDeckShuffled;
 
     void Start()
     {
@@ -84,6 +85,7 @@ public class DeckManager : MonoBehaviour
             eachCard.transform.SetSiblingIndex(cardsInDeck[currentCardIndex]);
             currentCardIndex++;
         }
+        onDeckShuffled.Raise();
     }
 
     public void DiscardAllCardsInHand()
