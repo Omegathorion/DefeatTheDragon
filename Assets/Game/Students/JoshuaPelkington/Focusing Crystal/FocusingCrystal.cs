@@ -13,9 +13,12 @@ public class FocusingCrystal : Relic
     {
         if (receivedCall.target != player)
         {
-            if (receivedCall.typeOfInteraction == InteractionType.Status)
+            if (receivedCall.initiator.transform.root == player.transform)
             {
-                receivedCall.processor.ReceiveAdder(gameObject, 1);
+                if (receivedCall.typeOfInteraction == InteractionType.Status)
+                {
+                    receivedCall.processor.ReceiveAdder(gameObject, 1);
+                }
             }
         }
     }
