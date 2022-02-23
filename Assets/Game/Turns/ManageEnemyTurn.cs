@@ -13,7 +13,6 @@ public class ManageEnemyTurn : MonoBehaviour
     public void BeginEnemyTurn()
     {
         StartCoroutine(EnemyActionQueue());
-        Invoke("StartTurn", enemyActionStartDelay + 0.5f);
     }
 
     public IEnumerator EnemyActionQueue()

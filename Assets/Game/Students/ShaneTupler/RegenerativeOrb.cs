@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
-public class RegenerativeOrb : Relic
+public class RegenerativeOrb : Relic, ITargetPlayer
 {
     [Header("Healing")]
     public int cardsPlayedThisTurn;
@@ -32,6 +32,13 @@ public class RegenerativeOrb : Relic
 
     public void ReceivePlayerTarget(GameObject player)
     {
-        player.GetComponent<Player>().TakeDamage(gameObject, -amountToHeal);
+        player.GetComponent<Player>().TakeHealing(gameObject, amountToHeal);
+        ResetCardPlayedCount();
+        Destroy(instantiatedTargeter);
+    }
+
+    public void ResetCardPlayedCount()
+    {
+        cardsPlayedThisTurn = 0;
     }
 }
