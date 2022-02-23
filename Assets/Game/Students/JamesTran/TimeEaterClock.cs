@@ -9,7 +9,11 @@ public class TimeEaterClock : Relic
     public int cardsPlayedThisTurn;
     public int maxCardsPlayed;
 
+    public int extraManaGainedPerTurn;
+
     public GameEvent playerTurnEnd;
+
+    public IntVariable playerManaVariable;
 
     public void OnCardPlayed()
     {
@@ -25,5 +29,9 @@ public class TimeEaterClock : Relic
         playerTurnEnd.Raise();
     }
 
-
+    public void ResetCardsPlayedThisTurn()
+    {
+        cardsPlayedThisTurn = 0;
+        playerManaVariable.Value += extraManaGainedPerTurn;
+    }
 }
