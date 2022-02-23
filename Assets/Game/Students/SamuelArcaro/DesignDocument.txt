@@ -26,5 +26,5 @@ If these enemies are encountered, then there should only be a maximum of 2 of th
 
 Relic:
 Name: Blood Strength
-Description: For each enemy defeated, increase Strength +2 until the end of the battle.
+Description: For each enemy defeated, increase Strength +2.
 
