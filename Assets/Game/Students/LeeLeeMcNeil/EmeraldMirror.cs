@@ -13,6 +13,10 @@ public class EmeraldMirror : Relic, ITargetPlayer
     public int cardsPlayedThisTurn;
     public int amountToBlock;
     public int thresholdToBlock;
+    public GameObject blockPrefab;
+    public GameObject processorPrefab;
+    public CallForInterjectionsGameEvent interjectionEvent;
+    public GameObjectCollection naughtyStatuses;
 
     //cards that need to be played is 4
 
@@ -31,23 +35,39 @@ public class EmeraldMirror : Relic, ITargetPlayer
     {
         instantiatedTargeter = Instantiate(playerTargeterPrefab);
         instantiatedTargeter.GetComponent<Targeter>().requester = gameObject;
-        //add block
     }
 
     public void ReceivePlayerTarget(GameObject player)
     {
-        player.GetComponent<Player>().TakeBlock(gameObject, amountToBlock);
+        GameObject blockProcessor = Instantiate(processorPrefab);
+        blockProcessor.GetComponent<InterjectionProcessor>().startingValue = amountToBlock;
+        interjectionEvent.Raise(new CallForInterjections(this.gameObject, player, InteractionType.Block, blockProcessor.GetComponent<InterjectionProcessor>()));
+
+        GameObject instantiatedBlock = Instantiate(blockPrefab);
+        instantiatedBlock.GetComponent<Status>().value = blockProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+
+        player.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedBlock);
+
+
         ResetCardPlayedCount();
+        RemoveNegativeStatuses(player);
         Destroy(instantiatedTargeter);
     }
 
-    public void RemoveStatus(GameObject status)
+    public void RemoveNegativeStatuses(GameObject player)
     {
-        if (cardsPlayedThisTurn == thresholdToBlock)
+        Status[] statuses = player.GetComponentsInChildren<Status>();
+        foreach (Status eachStatus in statuses)
         {
-           //not sure how to remove status
+            foreach (GameObject eachNaughtyStatus in naughtyStatuses)
+            {
+                if (eachStatus.GetType() == eachNaughtyStatus.GetComponent<Status>().GetType())
+                {
+                    Destroy(eachStatus.gameObject);
+                    break;
+                }
+            }
         }
-        
     }
 
     public void ResetCardPlayedCount()
