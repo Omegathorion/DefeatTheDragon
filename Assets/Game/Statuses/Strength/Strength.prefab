@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1558700822926179431
+--- !u!1 &7741934785509939925
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5505076397505389653}
-  - component: {fileID: 5257934141238589161}
-  - component: {fileID: 2134883922626533175}
+  - component: {fileID: 3491527106556270888}
+  - component: {fileID: 7023017848908374671}
+  - component: {fileID: -5339049586413058378}
   m_Layer: 0
-  m_Name: Focusing Crystal
+  m_Name: Strength
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5505076397505389653
+--- !u!4 &3491527106556270888
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 7741934785509939925}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5257934141238589161
+--- !u!114 &7023017848908374671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 7741934785509939925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4afc526e4f88c4cb0c35aa61b18651, type: 3}
+  m_Script: {fileID: 11500000, guid: 435dd8a742fb6d3478f24bc5500e980f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 1
---- !u!114 &2134883922626533175
+  value: 0
+  statusOwner: {fileID: 0}
+  onStatusApplied: {fileID: 11400000, guid: 84a25c5e4bbe2184096b3bd9ed0656b0, type: 2}
+  onStatusUpdated: {fileID: 11400000, guid: 451d5adc5e0d5234daaf5d476b4d8a38, type: 2}
+--- !u!114 &-5339049586413058378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 7741934785509939925}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b560abbe45f99f449abc2edafc2bb52a, type: 3}
@@ -66,9 +69,9 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5257934141238589161}
-        m_TargetAssemblyTypeName: FocusingCrystal, Assembly-CSharp
-        m_MethodName: RecieveStatusInterjection
+      - m_Target: {fileID: 7023017848908374671}
+        m_TargetAssemblyTypeName: Strength, Assembly-CSharp
+        m_MethodName: ReceiveInterjectionCall
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

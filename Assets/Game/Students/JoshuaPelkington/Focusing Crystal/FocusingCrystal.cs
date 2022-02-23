@@ -3,6 +3,7 @@ using UnityEngine;
 public class FocusingCrystal : Relic
 {
     GameObject player;
+    public int boostAmount;
 
     private void Awake()
     {
@@ -11,14 +12,11 @@ public class FocusingCrystal : Relic
 
     public void RecieveStatusInterjection(CallForInterjections receivedCall)
     {
-        if (receivedCall.target != player)
+        if (receivedCall.initiator.transform.root == player.transform)
         {
-            if (receivedCall.initiator.transform.root == player.transform)
+            if (receivedCall.typeOfInteraction == InteractionType.Status)
             {
-                if (receivedCall.typeOfInteraction == InteractionType.Status)
-                {
-                    receivedCall.processor.ReceiveAdder(gameObject, 1);
-                }
+                receivedCall.processor.ReceiveAdder(gameObject, boostAmount);
             }
         }
     }

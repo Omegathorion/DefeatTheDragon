@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
     public Transform statuses;
     public TextMeshPro healthTextDisplay;
     public GameObject intendedAction;
+    public GameObjectGameEvent onDeathEvent;
 
     void Start()
     {
@@ -44,12 +45,26 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
 
         currentHealth -= processingAmount;
         healthTextDisplay.text = currentHealth.ToString();
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
     {
         currentHealth -= receivedAmount;
         healthTextDisplay.text = currentHealth.ToString();
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        onDeathEvent.Raise(this.gameObject);
+        Destroy(gameObject);
     }
 
     public void TakeHealing(GameObject receivedHealer, int receivedAmount)
