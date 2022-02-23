@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6845589753934097011}
-  - component: {fileID: 222307656182368345}
   - component: {fileID: 6845589753934097008}
   - component: {fileID: 8070119605704190403}
+  - component: {fileID: 110289973}
   m_Layer: 0
   m_Name: Time Eater Clock
   m_TagString: Untagged
@@ -34,39 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &222307656182368345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6845589753934097010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6781b467167175a45a272c3787c44109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4639b70075f664641b569feaa68c940d, type: 3}
-        m_TargetAssemblyTypeName: RegenerativeOrb, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: {fileID: 0}
 --- !u!114 &6845589753934097008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsPlayedThisTurn: 0
   maxCardsPlayed: 12
+  extraManaGainedPerTurn: 1
   playerTurnEnd: {fileID: 11400000, guid: c0db3a85a96b6fe43a2a81ce03bf0fdc, type: 2}
+  playerManaVariable: {fileID: 11400000, guid: fd0e354444e49c5448dfb2937bba7873, type: 2}
 --- !u!114 &8070119605704190403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,9 +71,9 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: c0db3a85a96b6fe43a2a81ce03bf0fdc, type: 2}
-        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase, ScriptableObject-Architecture
-        m_MethodName: Raise
+      - m_Target: {fileID: 6845589753934097008}
+        m_TargetAssemblyTypeName: TimeEaterClock, Assembly-CSharp
+        m_MethodName: OnCardPlayed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -115,3 +84,35 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _debugValue: {fileID: 0}
+--- !u!114 &110289973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845589753934097010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
+  _event: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6845589753934097008}
+        m_TargetAssemblyTypeName: TimeEaterClock, Assembly-CSharp
+        m_MethodName: ResetCardsPlayedThisTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
