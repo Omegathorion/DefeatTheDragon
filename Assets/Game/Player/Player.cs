@@ -25,6 +25,10 @@ public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
     public void TakeDamage(GameObject receivedDamager, int receivedAmount)
     {
         int processingAmount = receivedAmount;
+        if (processingAmount < 0)
+        {
+            processingAmount = 0;
+        }
         if (statuses.GetComponentInChildren<Block>())
         {
             Block currentBlock = statuses.GetComponentInChildren<Block>();
@@ -44,6 +48,19 @@ public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
     public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
     {
         currentHealth -= receivedAmount;
+        healthTextDisplay.text = currentHealth.ToString();
+    }
+
+    public void TakeHealing(GameObject receivedHealer, int receivedAmount)
+    {
+        int processingAmount = receivedAmount;
+
+        if (currentHealth + processingAmount > maxHealth)
+        {
+            processingAmount = maxHealth - currentHealth;
+        }
+
+        currentHealth += processingAmount;
         healthTextDisplay.text = currentHealth.ToString();
     }
 
