@@ -18,4 +18,4 @@ Enemy - Poison enemy
 Alternates between x applying poison and gaining y armor
 
 Relic - Time Eater Clock
-Turn automatically ends after 12 seconds. Gain energy at the start of your turn
+Turn automatically ends after the player plays 12 cards. Gain 1 energy at the start of your turn

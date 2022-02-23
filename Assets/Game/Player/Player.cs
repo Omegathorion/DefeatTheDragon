@@ -4,13 +4,12 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 using TMPro;
 
-public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
+public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
 {
     public int currentHealth;
     public int maxHealth;
     public Transform statuses;
     public TextMeshPro healthTextDisplay;
-    public GameObject intendedAction;
 
     void Start()
     {
@@ -68,16 +67,5 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
             receivedStatus.GetComponent<Status>().statusOwner = this.gameObject;
             receivedStatus.GetComponent<Status>().onStatusApplied.Raise(receivedStatus);
         }
-    }
-
-    public virtual void DecideIntent()
-    {
-
-    }
-
-    public float ExecuteAction()
-    {
-        intendedAction.GetComponent<EnemyAction>().Execute();
-        return intendedAction.GetComponent<EnemyAction>().animationTime;
     }
 }
