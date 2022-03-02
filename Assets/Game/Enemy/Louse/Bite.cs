@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class BasicGremlinPuncture : EnemyAction, ITargetPlayer
+public class Bite : EnemyAction, ITargetPlayer
 {
+    public Vector2 damageRange;
+
     public int damage;
+    public float specialDamageScaling;
     public GameObject playerTargeterPrefab;
     GameObject instantiatedTargeter;
     GameObject playerTarget;
+
+    public void StartOfCombat()
+    {
+        damage = Mathf.FloorToInt(Random.Range(damageRange.x, damageRange.y + 1));
+    }
 
     public override void Execute()
     {
@@ -24,7 +32,7 @@ public class BasicGremlinPuncture : EnemyAction, ITargetPlayer
         playerTarget = player;
 
         GameObject damageProcessor = Instantiate(processorPrefab);
-        damageProcessor.GetComponent<InterjectionProcessor>().startingValue = Mathf.FloorToInt(damage * transform.root.GetComponent<Enemy>().difficultyModifier);
+        damageProcessor.GetComponent<InterjectionProcessor>().startingValue = Mathf.FloorToInt(damage * (transform.root.GetComponent<Enemy>().difficultyModifier * specialDamageScaling));
         interjectionEvent.Raise(new CallForInterjections(this.gameObject, playerTarget, InteractionType.Damage, damageProcessor.GetComponent<InterjectionProcessor>()));
         playerTarget.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, damageProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
         Destroy(damageProcessor);

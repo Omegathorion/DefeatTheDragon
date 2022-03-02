@@ -6,20 +6,26 @@ using TMPro;
 
 public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
 {
+    public float difficultyModifier;
     public int currentHealth;
     public int maxHealth;
     public Transform statuses;
     public TextMeshPro healthTextDisplay;
     public GameObject intendedAction;
+    public GameObjectGameEvent onDamagedEvent;
     public GameObjectGameEvent onDeathEvent;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        UpdateHealthDisplay();
+        Initialize(difficultyModifier);
     }
 
-    void UpdateHealthDisplay()
+    public virtual void Initialize(float receivedDifficultyModifier)
+    {
+        difficultyModifier = receivedDifficultyModifier;
+    }
+
+    public void UpdateHealthDisplay()
     {
         healthTextDisplay.text = currentHealth.ToString();
     }
@@ -44,6 +50,10 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
         }
 
         currentHealth -= processingAmount;
+        if (processingAmount > 0)
+        {
+            onDamagedEvent.Raise(this.gameObject);
+        }
         healthTextDisplay.text = currentHealth.ToString();
         if (currentHealth <= 0)
         {
@@ -54,6 +64,10 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
     public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
     {
         currentHealth -= receivedAmount;
+        if (receivedAmount > 0)
+        {
+            onDamagedEvent.Raise(this.gameObject);
+        }
         healthTextDisplay.text = currentHealth.ToString();
         if (currentHealth <= 0)
         {
