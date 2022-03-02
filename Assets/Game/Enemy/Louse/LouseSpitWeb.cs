@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SpitWeb : EnemyAction, ITargetPlayer
+public class LouseSpitWeb : EnemyAction, ITargetPlayer
 {
     public int weakAmount;
     public GameObject playerTargeterPrefab;

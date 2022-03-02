@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Louse : Enemy
+public class Cultist : Enemy
 {
-    public EnemyAction statusAttack;
+    public EnemyAction incantationBuff;
     public EnemyAction physicalAttack;
-    bool whatShouldIDo;
+    bool amIBuffed = false;
 
     public float specialHPScaling;
 
@@ -21,10 +21,10 @@ public class Louse : Enemy
 
     public override void DecideIntent()
     {
-        whatShouldIDo = !whatShouldIDo;
-        if (whatShouldIDo)
+        if (!amIBuffed)
         {
-            intendedAction = statusAttack.gameObject;
+            intendedAction = incantationBuff.gameObject;
+            amIBuffed = true;
         }
         else
         {

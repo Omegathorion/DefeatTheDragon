@@ -648,7 +648,7 @@ MonoBehaviour:
   onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
   statusAttack: {fileID: 7853407691976438026}
   physicalAttack: {fileID: 86195574541208285}
-  specialHPScaling: 2
+  specialHPScaling: 0.5
 --- !u!1 &8792021566843655776
 GameObject:
   m_ObjectHideFlags: 0
