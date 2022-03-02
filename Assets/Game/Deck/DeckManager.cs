@@ -48,10 +48,25 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    public void CardWasDrawn(GameObject whichCardWasDrawn)
+    {
+        whichCardWasDrawn.transform.parent = hand;
+    }
+
     public void CardWasDiscarded(GameObject whichCardWasDiscarded)
     {
         whichCardWasDiscarded.transform.parent = discard;
         whichCardWasDiscarded.transform.localPosition = Vector3.zero;
+    }
+
+    public void CardWasPutInDeck(GameObject whichCardWasPutInDeck)
+    {
+        whichCardWasPutInDeck.transform.parent = deck;
+    }
+
+    public void CardWasExhausted(GameObject whichCardWasExhausted)
+    {
+        whichCardWasExhausted.transform.parent = exhaust;
     }
 
     public void ShuffleDiscardPileToDeck()

@@ -13,6 +13,7 @@ public class SlimeAttack : Card, ITargetSingleEnemy
     public GameObject processorPrefab;
     private GameObject currentProcessor;
     public CallForInterjectionsGameEvent interjectionEvent;
+    public GameObjectGameEvent onCardPlayed;
 
     public GameObject SlimeResidue;
     public int SlimeAmount;
@@ -41,6 +42,7 @@ public class SlimeAttack : Card, ITargetSingleEnemy
                 instantiatedSlime.GetComponent<Status>().value = slimeProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 Destroy(slimeProcessor);
                 target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedSlime);
+                onCardPlayed.Raise(this.gameObject);
             }
             else
             {

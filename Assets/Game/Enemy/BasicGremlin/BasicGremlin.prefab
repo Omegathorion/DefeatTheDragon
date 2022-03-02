@@ -488,6 +488,7 @@ MonoBehaviour:
   statuses: {fileID: 8810576858726045169}
   healthTextDisplay: {fileID: 8326670618501637281}
   intendedAction: {fileID: 0}
+  onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
   basicAttack: {fileID: 7322987151043801666}
   basicAttack2: {fileID: 5020888665962256987}
 --- !u!114 &4991012604213082642

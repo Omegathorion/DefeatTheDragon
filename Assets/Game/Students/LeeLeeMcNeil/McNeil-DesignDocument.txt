@@ -19,8 +19,11 @@ Enemy:
    * This elite enemy stacks up on 3 burns and 1 wound every time it hits the player. The player needs to learn how to take out this enemy quickly, to avoid it’s exponential damage stacking. The best counter to this is the Emerald Mirror relic.
    * The design rationale behind this enemy is to encourage the player to counter a high damage over time output enemy, making the player utilize their cards and relics in a strategic way to specifically counter a challenging enemy. 
 Relic:
-* Emerald Mirror 
-   * At the start of your 4th turn, add 8 block and reflect any status impairments sent by the enemy back at them. 
+* Emerald Mirror (changed)
+   * Every 4th card played, add 3 block and remove and reflect(remove) any status impairments.
    * This relic will be useful against enemies that output high status effects, providing some defense for the player, and counter-attack. 
    * The design rationale behind this relic is to encourage the player to pay attention to the enemy they’re fighting and focus on countering their abilities. The player has to study their enemy and know when to use this specific relic. 
    * Rare
+
+
+		

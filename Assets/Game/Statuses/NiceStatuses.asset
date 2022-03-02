@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156f4052644faf645bba864aa1fd4e16, type: 3}
+  m_Name: NiceStatuses
+  m_EditorClassIdentifier: 
+  _list:
+  - {fileID: 1412610654384114529, guid: 04e4cc6a81a79b344b5ad15875032b08, type: 3}
+  - {fileID: 7741934785509939925, guid: d386f27645ea55f44a972416c983db26, type: 3}

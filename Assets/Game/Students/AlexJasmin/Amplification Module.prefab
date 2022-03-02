@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1558700822926179431
+--- !u!1 &2807189425909783251
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,68 +8,73 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5505076397505389653}
-  - component: {fileID: 5257934141238589161}
-  - component: {fileID: 2134883922626533175}
+  - component: {fileID: 2807189425909783250}
+  - component: {fileID: 7075953303172961122}
+  - component: {fileID: 3615585789532314960}
   m_Layer: 0
-  m_Name: Focusing Crystal
+  m_Name: Amplification Module
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5505076397505389653
+--- !u!4 &2807189425909783250
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 2807189425909783251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5257934141238589161
+--- !u!114 &7075953303172961122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 2807189425909783251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4afc526e4f88c4cb0c35aa61b18651, type: 3}
+  m_Script: {fileID: 11500000, guid: 78463e7894f558046819fec35fd944eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostAmount: 1
---- !u!114 &2134883922626533175
+  vulnerabilityPrefab: {fileID: 6647197598793693497, guid: 5b67c65d77669324f81a1436352bf2c6, type: 3}
+  processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
+  interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
+  playerMana: {fileID: 11400000, guid: fd0e354444e49c5448dfb2937bba7873, type: 2}
+  vulnerabilityAmount: 10000
+  manaAmount: 2
+--- !u!114 &3615585789532314960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558700822926179431}
+  m_GameObject: {fileID: 2807189425909783251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b560abbe45f99f449abc2edafc2bb52a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
+  _event: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5257934141238589161}
-        m_TargetAssemblyTypeName: FocusingCrystal, Assembly-CSharp
-        m_MethodName: RecieveStatusInterjection
-        m_Mode: 0
+      - m_Target: {fileID: 7075953303172961122}
+        m_TargetAssemblyTypeName: AmplificationModule, Assembly-CSharp
+        m_MethodName: AtStartOfTurn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -78,8 +83,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _debugValue:
-    initiator: {fileID: 0}
-    target: {fileID: 0}
-    typeOfInteraction: 0
-    processor: {fileID: 0}
