@@ -110,8 +110,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8355709395676424979}
+  m_Children: []
   m_Father: {fileID: 325010875380432383}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,7 +202,7 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   _event: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   _response:
     m_PersistentCalls:
@@ -454,6 +453,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8355709395671078471}
+  - {fileID: 8355709395676424979}
   m_Father: {fileID: 325010875380432383}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -572,8 +572,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 325010875134337913}
-  m_RootOrder: 0
+  m_Father: {fileID: 8207149198819129001}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8355709395676424976
 MonoBehaviour:
@@ -593,7 +593,7 @@ MonoBehaviour:
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
   blockRange: {x: 3, y: 6}
   blockAmount: 0
-  blockPrefab: {fileID: 1412610654384114529, guid: 04e4cc6a81a79b344b5ad15875032b08, type: 3}
+  blockPrefab: {fileID: 6234499715714026394, guid: e3f1e192589edc34c9ac465ab79bc4a5, type: 3}
 --- !u!114 &8292592019359821737
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,8 +29,5 @@ public class PoisonBlock : EnemyAction
         transform.root.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, currentBlockObject);
 
         Destroy(currentProcessor);
-
-        Destroy(this.gameObject);
-
     }
 }
