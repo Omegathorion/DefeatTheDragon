@@ -8,8 +8,8 @@ public class PoisonBlock : EnemyAction
     public Vector2 blockRange;
     public int blockAmount;
     public GameObject blockPrefab;
-    public GameObject processorPrefab;
-    public CallForInterjectionsGameEvent interjectionEvent;
+    //public GameObject processorPrefab;
+    //public CallForInterjectionsGameEvent interjectionEvent;
 
     public void OnStartOfCombat()
     {
