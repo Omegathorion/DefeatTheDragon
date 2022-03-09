@@ -14,8 +14,8 @@ Card 3 - All In
 Exhaust all Skill Cards. Gain 1 strength for all cards exhausted
 Last resort card. Gives lots of strength to boost all attack cards and hope to kill the enemy in the next few turns
 
-Enemy - Poison enemy
-Alternates between x applying poison and gaining y armor
+Enemy - Piercing Enemy
+Alternates between dealing damage that piereces through armor and blocking
 
 Relic - Time Eater Clock
 Turn automatically ends after the player plays 12 cards. Gain 1 energy at the start of your turn
