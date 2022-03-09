@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 104928162258078028}
-  - component: {fileID: 7322987151043801666}
+  - component: {fileID: 2721569568451036170}
   m_Layer: 6
-  m_Name: Puncture
+  m_Name: Raging Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 1090568085240217633}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7322987151043801666
+--- !u!114 &2721569568451036170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3959812033675401345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d60008c16856148bcb992212fedce5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a0ace54be45c5a498db806ff2dd4ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animationTime: 1
-  attackName: Puncture
+  attackName: Raging Punch
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
-  damage: 10
+  baseDamage: 2
+  damageIncreasePerTurn: 2
   playerTargeterPrefab: {fileID: 7633976765137124906, guid: be52a247947d316418dbf0a7118602ed, type: 3}
 --- !u!1 &4439615346170559126
 GameObject:
@@ -380,10 +381,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8810576858632522615}
   - component: {fileID: 8810576858632522614}
-  - component: {fileID: 7214045272876746062}
   - component: {fileID: 4991012604213082642}
+  - component: {fileID: 6457449477557094347}
   m_Layer: 6
-  m_Name: BasicGremlin
+  m_Name: Rager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,27 +421,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7214045272876746062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8810576858632522609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae703231d1b813542bfddf90467e9ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficultyModifier: 5
-  currentHealth: 0
-  maxHealth: 15
-  statuses: {fileID: 8810576858726045169}
-  healthTextDisplay: {fileID: 8326670618501637281}
-  intendedAction: {fileID: 0}
-  onDamagedEvent: {fileID: 11400000, guid: 5bac66e27bd32504c8fd0c5368b47d46, type: 2}
-  onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
-  basicAttack: {fileID: 7322987151043801666}
 --- !u!114 &4991012604213082642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,8 +441,8 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7214045272876746062}
-        m_TargetAssemblyTypeName: BasicGremlin, Assembly-CSharp
+      - m_Target: {fileID: 6457449477557094347}
+        m_TargetAssemblyTypeName: Rager, Assembly-CSharp
         m_MethodName: DecideIntent
         m_Mode: 1
         m_Arguments:
@@ -473,6 +453,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6457449477557094347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810576858632522609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65633d9146071de4b860a0e15389e58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyModifier: 5
+  currentHealth: 0
+  maxHealth: 10
+  statuses: {fileID: 8810576858726045169}
+  healthTextDisplay: {fileID: 8326670618501637281}
+  intendedAction: {fileID: 0}
+  onDamagedEvent: {fileID: 11400000, guid: 5bac66e27bd32504c8fd0c5368b47d46, type: 2}
+  onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
+  basicAttack: {fileID: 2721569568451036170}
 --- !u!1 &8810576858726045168
 GameObject:
   m_ObjectHideFlags: 0

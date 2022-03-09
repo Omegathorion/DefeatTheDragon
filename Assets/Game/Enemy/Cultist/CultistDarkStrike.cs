@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class BasicGremlinPuncture : EnemyAction, ITargetPlayer
+public class CultistDarkStrike : EnemyAction, ITargetPlayer
 {
     public int damage;
     public GameObject playerTargeterPrefab;

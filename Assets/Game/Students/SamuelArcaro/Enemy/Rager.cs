@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicGremlin : Enemy
+public class Rager : Enemy
 {
     public EnemyAction basicAttack;
 

@@ -5,11 +5,16 @@ using ScriptableObjectArchitecture;
 
 public class Cheats : MonoBehaviour
 {
+    public GameEvent startCombatEvent;
     public GameEvent startPlayerTurn;
     public IntGameEvent drawCardsEvent;
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            startCombatEvent.Raise();
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             startPlayerTurn.Raise();
