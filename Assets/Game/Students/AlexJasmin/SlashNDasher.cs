@@ -6,7 +6,9 @@ public class SlashNDasher : Enemy
 {
     public EnemyAction slash;
     public EnemyAction dopeUp;
-    private int turnCounter = 0;
+
+    private int cardCounter = 0;
+    private bool firstTurn = true;
     public override void Initialize(float receivedDifficultyModifier)
     {
         base.Initialize(receivedDifficultyModifier);
@@ -16,16 +18,22 @@ public class SlashNDasher : Enemy
 
     public override void DecideIntent()
     {
-        if (turnCounter >= 1)
+        if(firstTurn == true)
+        {
+            intendedAction = dopeUp.gameObject;
+            firstTurn = false;
+        }
+        else if(firstTurn == false)
         {
             intendedAction = slash.gameObject;
         }
-
-        else if(turnCounter < 1)
+    }
+    public void OtherIntent()
+    {
+        cardCounter += 1;
+        if(cardCounter >= 2)
         {
-            intendedAction = dopeUp.gameObject;
+            intendedAction = slash.gameObject;
         }
-
-        turnCounter += 1;
     }
 }
