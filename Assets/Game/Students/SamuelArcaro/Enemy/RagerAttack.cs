@@ -28,6 +28,7 @@ public class RagerAttack : EnemyAction, ITargetPlayer
         baseDamageProcessor.GetComponent<InterjectionProcessor>().startingValue = Mathf.FloorToInt(baseDamage * transform.root.GetComponent<Enemy>().difficultyModifier);
         interjectionEvent.Raise(new CallForInterjections(this.gameObject, playerTarget, InteractionType.Damage, baseDamageProcessor.GetComponent<InterjectionProcessor>()));
         playerTarget.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, baseDamageProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+		this.baseDamage += this.damageIncreasePerTurn;
         Destroy(baseDamageProcessor);
         Destroy(instantiatedTargeter);
     }
