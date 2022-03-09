@@ -3056,6 +3056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded3ff0762af1146837ee63214d444f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startCombatEvent: {fileID: 0}
   startPlayerTurn: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   drawCardsEvent: {fileID: 11400000, guid: 9b063e5f946008f43a72416d5dd9252f, type: 2}
 --- !u!4 &1734672801
