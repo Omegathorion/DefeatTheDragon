@@ -42,7 +42,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2377370962601604217}
-  - component: {fileID: 5143328982520581045}
   - component: {fileID: 8172065967933322590}
   m_Layer: 0
   m_Name: Sacred Vow
@@ -66,25 +65,6 @@ Transform:
   m_Father: {fileID: 4475361850878464394}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5143328982520581045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3964204980465670164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7b7d52f908e8f478a38b0ed66ce8c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationTime: 1
-  attackName: Lance Strike
-  processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
-  interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
-  sentinel: {fileID: 3096531489599798554}
-  damage: 5
-  playerTargeterPrefab: {fileID: 7633976765137124906, guid: be52a247947d316418dbf0a7118602ed, type: 3}
 --- !u!114 &8172065967933322590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +252,7 @@ MonoBehaviour:
   cardsPlayedThisTurn: 0
   lanceStrike: {fileID: 646168220758407814}
   basicAttack: {fileID: 646168220758407814}
-  healSelf: {fileID: 5143328982520581045}
+  healSelf: {fileID: 0}
   cardPlayedEvent: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
   shouldAttack: 1
 --- !u!1 &5439399444792127101
