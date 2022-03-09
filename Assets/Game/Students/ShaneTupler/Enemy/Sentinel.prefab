@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 5439399443881040605}
   - component: {fileID: 8393152266281102265}
   - component: {fileID: 3096531489599798554}
+  - component: {fileID: 6158751670602979779}
   m_Layer: 6
   m_Name: Sentinel
   m_TagString: Untagged
@@ -216,8 +217,8 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Louse, Assembly-CSharp
+      - m_Target: {fileID: 3096531489599798554}
+        m_TargetAssemblyTypeName: Sentinel, Assembly-CSharp
         m_MethodName: DecideIntent
         m_Mode: 1
         m_Arguments:
@@ -252,9 +253,42 @@ MonoBehaviour:
   cardsPlayedThisTurn: 0
   lanceStrike: {fileID: 646168220758407814}
   basicAttack: {fileID: 646168220758407814}
-  healSelf: {fileID: 0}
+  healSelf: {fileID: 8172065967933322590}
   cardPlayedEvent: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
   shouldAttack: 1
+--- !u!114 &6158751670602979779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439399443881040602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6781b467167175a45a272c3787c44109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 4e750ac08a955eb40be1b1d3f1400593, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3096531489599798554}
+        m_TargetAssemblyTypeName: Sentinel, Assembly-CSharp
+        m_MethodName: OnCardPlayed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: {fileID: 0}
 --- !u!1 &5439399444792127101
 GameObject:
   m_ObjectHideFlags: 0
