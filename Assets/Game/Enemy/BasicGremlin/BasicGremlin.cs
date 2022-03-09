@@ -8,8 +8,9 @@ public class BasicGremlin : Enemy
 
     public override void Initialize(float receivedDifficultyModifier)
     {
-        base.Initialize(receivedDifficultyModifier);
-        currentHealth = Mathf.FloorToInt(maxHealth * difficultyModifier);
+        base.Initialize(receivedDifficultyModifier); 
+        maxHealth = Mathf.FloorToInt(maxHealth * difficultyModifier);
+        currentHealth = maxHealth;
         UpdateHealthDisplay();
     }
 

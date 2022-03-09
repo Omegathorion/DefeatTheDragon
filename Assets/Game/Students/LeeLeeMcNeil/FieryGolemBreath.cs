@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using ScriptableObjectArchitecture;
 
 public class FieryGolemBreath : EnemyAction, ITargetPlayer
 {
@@ -9,6 +10,14 @@ public class FieryGolemBreath : EnemyAction, ITargetPlayer
     public GameObject playerTargeterPrefab;
     GameObject instantiatedTargeter;
     GameObject playerTarget;
+
+    public GameObject burnCardPrefab;
+    public int numberOfBurnCards;
+
+    public GameObjectGameEvent drawCardEvent;
+
+    public GameObject scorchPrefab;
+    public int initialScorchValue;
 
     public override void Execute()
     {
@@ -29,5 +38,20 @@ public class FieryGolemBreath : EnemyAction, ITargetPlayer
         playerTarget.GetComponent<ITakeDamage>().TakeDamage(this.gameObject, damageProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
         Destroy(damageProcessor);
         Destroy(instantiatedTargeter);
+
+        for (int index = 0; index < numberOfBurnCards; index++)
+        {
+            GameObject instantiatedBurn = Instantiate(burnCardPrefab);
+            playerTarget.GetComponentInChildren<DeckManager>().AddCardToDeck(instantiatedBurn);
+            drawCardEvent.Raise(instantiatedBurn);
+        }
+
+        GameObject instantiatedStatus = Instantiate(scorchPrefab);
+        GameObject statusProcessor = Instantiate(processorPrefab);
+        statusProcessor.GetComponent<InterjectionProcessor>().startingValue = initialScorchValue;
+        interjectionEvent.Raise(new CallForInterjections(this.gameObject, playerTarget, InteractionType.Status, damageProcessor.GetComponent<InterjectionProcessor>()));
+        instantiatedStatus.GetComponent<Status>().value = statusProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+        playerTarget.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedStatus);
+        Destroy(damageProcessor);
     }
 }

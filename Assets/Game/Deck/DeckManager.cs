@@ -28,6 +28,12 @@ public class DeckManager : MonoBehaviour
         
     }
 
+    public void AddCardToDeck(GameObject receivedCard)
+    {
+        receivedCard.transform.parent = deck;
+        putCardBackIntoDrawPileEvent.Raise(receivedCard);
+    }
+
     public void DrawCardsFromTopOfDeck(int amountOfCardsToDraw)
     {
         for (int cardIndex = 0; cardIndex < amountOfCardsToDraw; cardIndex++)

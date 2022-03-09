@@ -53,6 +53,7 @@ MonoBehaviour:
   blockPrefab: {fileID: 1412610654384114529, guid: 04e4cc6a81a79b344b5ad15875032b08, type: 3}
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
+  naughtyStatuses: {fileID: 11400000, guid: f87dedc4d0596094daf3ab1b79bc1772, type: 2}
 --- !u!114 &-4429394450532747375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   _event: {fileID: 11400000, guid: 5e5bea369ee65704c99c5fc1dc6b2514, type: 2}
   _response:
     m_PersistentCalls:

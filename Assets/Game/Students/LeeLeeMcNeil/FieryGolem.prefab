@@ -186,7 +186,7 @@ MonoBehaviour:
   intendedAction: {fileID: 0}
   onDamagedEvent: {fileID: 11400000, guid: 5bac66e27bd32504c8fd0c5368b47d46, type: 2}
   onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
-  basicAttack: {fileID: 0}
+  basicAttack: {fileID: 3109029759274478574}
 --- !u!114 &3980758849307165040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,9 +431,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8289186325572071982}
-  - component: {fileID: 1719713786679216416}
+  - component: {fileID: 3109029759274478574}
   m_Layer: 6
-  m_Name: Puncture
+  m_Name: FieryBreath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,7 @@ Transform:
   m_Father: {fileID: 9034121300514405187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1719713786679216416
+--- !u!114 &3109029759274478574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,14 +463,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4938698920858903523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d60008c16856148bcb992212fedce5, type: 3}
+  m_Script: {fileID: 11500000, guid: a3f0e7a869184354a9017b1253fd17c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 1
-  attackName: Puncture
+  animationTime: 2
+  attackName: Fiery Breath
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
-  damage: 10
+  damage: 4
   playerTargeterPrefab: {fileID: 7633976765137124906, guid: be52a247947d316418dbf0a7118602ed, type: 3}
 --- !u!1 &5756007360467436020
 GameObject:
