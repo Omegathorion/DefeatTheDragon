@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db66cfc1fd904c0499429559a4b41a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyModifier: 0
+  difficultyModifier: 1
   currentHealth: 50
   maxHealth: 60
   statuses: {fileID: 7591650461860917147}
