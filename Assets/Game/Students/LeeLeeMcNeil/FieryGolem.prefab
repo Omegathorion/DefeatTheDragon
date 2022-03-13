@@ -183,7 +183,7 @@ MonoBehaviour:
   maxHealth: 25
   statuses: {fileID: 592408519794814611}
   healthTextDisplay: {fileID: 140625748801396675}
-  intendedAction: {fileID: 0}
+  intendedAction: {fileID: 4938698920858903523}
   onDamagedEvent: {fileID: 11400000, guid: 5bac66e27bd32504c8fd0c5368b47d46, type: 2}
   onDeathEvent: {fileID: 11400000, guid: 73a62cff65c6b8c4f9c46b5d21afe13b, type: 2}
   basicAttack: {fileID: 3109029759274478574}
@@ -472,6 +472,11 @@ MonoBehaviour:
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
   damage: 4
   playerTargeterPrefab: {fileID: 7633976765137124906, guid: be52a247947d316418dbf0a7118602ed, type: 3}
+  burnCardPrefab: {fileID: 9082215513077231819, guid: 2358069d27bba2b41955614e79fae4da, type: 3}
+  numberOfBurnCards: 2
+  drawCardEvent: {fileID: 11400000, guid: b85e84c9e04ca65449df710f268445e3, type: 2}
+  scorchPrefab: {fileID: 8609167550982071520, guid: 17d7959e3beac004f958e98b819d1e7f, type: 3}
+  initialScorchValue: 2
 --- !u!1 &5756007360467436020
 GameObject:
   m_ObjectHideFlags: 0
