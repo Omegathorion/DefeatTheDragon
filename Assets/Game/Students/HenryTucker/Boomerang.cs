@@ -17,6 +17,7 @@ public class Boomerang : MonoBehaviour
         if (discardedCards.Length >= 1)
         {
             GameObject cardDrawn = discardedCards[Random.Range(0, discardedCards.Length)].gameObject;
+            deckManager.CardWasDrawn(cardDrawn);
             drawCardEvent.Raise(cardDrawn);
         }
         //GameObject cardFromDiscard = discardPile.GetChild(Random.Range(0, discardPile.GetChild.length).gameObject);
