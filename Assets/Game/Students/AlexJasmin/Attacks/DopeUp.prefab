@@ -49,5 +49,7 @@ MonoBehaviour:
   processorPrefab: {fileID: 7970086858874095556, guid: 5d3565d2968992948a3bf4f72038d9e2, type: 3}
   interjectionEvent: {fileID: 11400000, guid: 9b63a51f1a0867342a672f30aabd974c, type: 2}
   strengthAmount: 3
+  blockAmount: 15
   playerTargeterPrefab: {fileID: 7633976765137124906, guid: be52a247947d316418dbf0a7118602ed, type: 3}
   strengthPrefab: {fileID: 7741934785509939925, guid: d386f27645ea55f44a972416c983db26, type: 3}
+  blockPrefab: {fileID: 6234499715714026394, guid: e3f1e192589edc34c9ac465ab79bc4a5, type: 3}

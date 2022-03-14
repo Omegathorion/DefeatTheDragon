@@ -55,7 +55,10 @@ public class CrystalGoliath : Enemy, ITakeDamage, ITakeStatus
             if (usedShardSlash)
                 intendedAction = CrystalCrush.gameObject;
             else
+            {
                 intendedAction = ShardSlash.gameObject;
+                usedShardSlash = true;
+            }
         }
 
         IncrementTurnCounter();

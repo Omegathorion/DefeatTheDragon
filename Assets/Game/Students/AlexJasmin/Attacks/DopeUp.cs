@@ -6,8 +6,10 @@ using DG.Tweening;
 public class DopeUp : EnemyAction
 {
     public int strengthAmount = 3;
+    public int blockAmount = 10;
     public GameObject playerTargeterPrefab;
     public GameObject strengthPrefab;
+    public GameObject blockPrefab;
     GameObject instantiatedTargeter;
     GameObject playerTarget;
 
@@ -18,15 +20,14 @@ public class DopeUp : EnemyAction
 
         instantiatedTargeter = Instantiate(playerTargeterPrefab);
         instantiatedTargeter.GetComponent<Targeter>().requester = this.gameObject;
-    }
-
-    public void ReceivePlayerTarget(GameObject player)
-    {
-        playerTarget = player;
 
         GameObject instantiatedStrength = Instantiate(strengthPrefab);
         instantiatedStrength.GetComponent<Status>().value = strengthAmount;
         transform.root.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedStrength);
+
+        GameObject instantiatedBlock = Instantiate(blockPrefab);
+        instantiatedBlock.GetComponent<Status>().value = blockAmount;
+        transform.root.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedBlock);
 
         Destroy(instantiatedTargeter);
     }
