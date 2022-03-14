@@ -12,10 +12,10 @@ public class Disintegrate : Card, ITargetSingleEnemy
     private GameObject currentProcessor;
     public CallForInterjectionsGameEvent interjectionEvent;
 
-    
+    public int DisintegrateDamage;
     private GameObject currentTargeter;
-    
 
+    public int DisintegrateDrawNum;
 
 
 
@@ -31,20 +31,28 @@ public class Disintegrate : Card, ITargetSingleEnemy
             manaProcessor.GetComponent<InterjectionProcessor>().startingValue = manaCost;
             interjectionEvent.Raise(new CallForInterjections(this.gameObject, this.gameObject, InteractionType.Mana, manaProcessor.GetComponent<InterjectionProcessor>()));
             int processedManaCost = manaProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+
             if (playerMana >= processedManaCost)
             {
-
+                RemoveBlock(target);
+                
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
 
-                
+
                 GameObject disintegrateProcessor = Instantiate(processorPrefab);
-                
-                interjectionEvent.Raise(new CallForInterjections(this.gameObject, target, InteractionType.Status, disintegrateProcessor.GetComponent<InterjectionProcessor>()));
-                instantiatedDisintegrate.GetComponent<Status>().value = disintegrateProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+
+
+
+                disintegrateProcessor.GetComponent<InterjectionProcessor>().startingValue = DisintegrateDamage;
+                interjectionEvent.Raise(new CallForInterjections(this.gameObject, target.gameObject, InteractionType.Damage, disintegrateProcessor.GetComponent<InterjectionProcessor>()));
+                int FinalDamageDisintegrate = disintegrateProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
                 Destroy(disintegrateProcessor);
-                target.GetComponent<ITakeStatus>().TakeStatus(this.gameObject, instantiatedDisintegrate);
+
+                target.GetComponent<ITakeDamage>().TakePiercingDamage(this.gameObject, FinalDamageDisintegrate);
                 onCardPlayed.Raise(this.gameObject);
+                
+                DrawCard();
             }
             else
             {
@@ -94,19 +102,32 @@ public class Disintegrate : Card, ITargetSingleEnemy
 
     }
 
-    //public void RemoveBlock(GameObject receivedTarget)    This should specifically remove block. Do we need another list for it, like the naughty statuses? 
-    //{
-        //Status[] statuses = player.GetComponentsInChildren<Status>();
-        //foreach (Status eachStatus in statuses)
-        //{
-            //foreach (GameObject eachNaughtyStatus in naughtyStatuses) 
-            //{
-                //if (eachStatus.GetType() == eachNaughtyStatus.GetComponent<Status>().GetType())
-                //{
-                  //  Destroy(eachStatus.gameObject);
-                    break;
-                //}
-           // }
-        //}
+    public void RemoveBlock(GameObject receivedTarget)
+    {
+        Status[] statuses = receivedTarget.GetComponentsInChildren<Status>();
+        foreach (Status eachStatus in statuses)
+        {
+
+            if (eachStatus.gameObject.GetComponent<Block>())
+            {
+                Destroy(eachStatus.gameObject);
+                break;
+            }
+
+        }
+    }
+
+    public void DrawCard()
+    {
+        GameObject drawcardProcessor = Instantiate(processorPrefab);
+
+
+
+        drawcardProcessor.GetComponent<InterjectionProcessor>().startingValue = DisintegrateDrawNum;
+        interjectionEvent.Raise(new CallForInterjections(this.gameObject, this.transform.root.gameObject, InteractionType.Draw, drawcardProcessor.GetComponent<InterjectionProcessor>()));
+        int FinalDrawValue = drawcardProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue();
+        Destroy(drawcardProcessor);
+        this.transform.root.GetComponentInChildren<DeckManager>().DrawCardsFromTopOfDeck(FinalDrawValue);
+
     }
 }
