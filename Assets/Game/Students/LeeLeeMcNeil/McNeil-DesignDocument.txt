@@ -7,7 +7,7 @@ Cards:
    * This card provides significant overtime damage to help efficiently win the round, at the sacrifice of 2 random cards. The question is if the player is willing to sacrifice 2 cards for this consistent output of damage.
    * The design rationale behind this card is to entice the player to take a major risk to secure a fight, adding intensity to battles and player decision. 
    * Upgrade increases Damage to 8 each round. 
-* Spike Defense - Gain 6 Block Deal 7 Damage. 
+* Spike Defense - Gain 6 Block and gives 7 Slime residue to the player that reduces each enemy hit by 7. 
    * This card provides an offensive and defensive opportunity for the player. It is a useful but not too strong card that is useful in combat, giving the player a small advantage in combat. 
    * The design rationale behind this card is to balance between powerful cards and weaker cards, providing a useful, but not overpowered card into the mix. 
    * Upgrade increases Damage to 8. 

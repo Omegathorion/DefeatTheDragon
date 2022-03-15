@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlimeResidue : Status
 {
-    public int slimedmg;
+    
 
     public void ReceiveInterjectionCall(CallForInterjections receivedCall)
     {
@@ -12,7 +12,8 @@ public class SlimeResidue : Status
         {
             if (receivedCall.typeOfInteraction == InteractionType.Damage)
             {
-                receivedCall.processor.ReceiveAdder(this.gameObject, slimedmg * value);
+
+                receivedCall.processor.ReceiveAdder(this.gameObject, -value);
 
             }
         }
