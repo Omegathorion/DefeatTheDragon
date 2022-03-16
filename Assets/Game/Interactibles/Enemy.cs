@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class Enemy : MonoBehaviour, ITakeDamage, ITakeStatus
     public GameObject intendedAction;
     public GameObjectGameEvent onDamagedEvent;
     public GameObjectGameEvent onDeathEvent;
+	
+	[NonSerialized]
+	public int prevDamage = 0;
+
 
     void Start()
     {

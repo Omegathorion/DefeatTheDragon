@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
     public int maxHealth;
     public Transform statuses;
     public TextMeshPro healthTextDisplay;
+	
+	[NonSerialized]
+	public bool hasFullBlock = false;
 
     void Start()
     {
@@ -22,8 +26,18 @@ public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
         healthTextDisplay.text = currentHealth.ToString();
     }
 
-    public void TakeDamage(GameObject receivedDamager, int receivedAmount)
-    {
+    public void TakeDamage(GameObject receivedDamager, int receivedAmount) {
+		
+		if (this.hasFullBlock) {
+			this.hasFullBlock = false;
+			return;
+		}
+		
+		Enemy enemy = receivedDamager.GetComponent<Enemy>();
+		if (enemy != null) {
+			enemy.prevDamage = receivedAmount;
+		}
+		
         int processingAmount = receivedAmount;
         if (processingAmount < 0)
         {
@@ -47,6 +61,16 @@ public class Player : MonoBehaviour, ITakeDamage, ITakeStatus
 
     public void TakePiercingDamage(GameObject receivedDamager, int receivedAmount)
     {
+		if (this.hasFullBlock) {
+			this.hasFullBlock = false;
+			return;
+		}
+		
+		Enemy enemy = receivedDamager.GetComponent<Enemy>();
+		if (enemy != null) {
+			enemy.prevDamage = receivedAmount;
+		}
+		
         currentHealth -= receivedAmount;
         healthTextDisplay.text = currentHealth.ToString();
     }
