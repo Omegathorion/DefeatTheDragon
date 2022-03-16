@@ -4,27 +4,39 @@ Assignment 01 - Design Document
 
 Card 01:
 Title: Final Resort
-Description: Deals 50 damage to an enemy. If the enemy survives, you will also take 50 damage.
-Cost: 1 Mana
+Information:
+	- Deals 50 damage to a single enemy. If the enemy survives the attack, you will also take 50 damage.
+	- This attack does not ignore block points and/or stat boosts.
+Cost: 3 Mana
 
 Card 02:
 Title: Copycat
-Description: Copies an enemies attack from the previous turn and uses it back against them.
+Information:
+	- Copies an enemies attack from the previous turn and uses it back against them.
+	- This will only work for attacks that dealt damage.
+	- This will not inflict any status effects on an enemy.
+	- This will not work if the enemy did not attack and/or did not deal any damage.
 Cost: 1 Mana
 
 Card 03:
 Title: Full Block
-Description: The first enemy attack will not do any block / damage to you for this turn.
-Cost: 3 Mana
+Information:
+	- Completely negates the first enemy attack of that turn.
+	- You will not take any block damage or regular damage from the first attack.
+Cost: 2 Mana
 
 Enemy:
 Name: Rager
-HP: 16
-Description: Attacks for 2 Damage on the first turn. Each turn afterwards, it will deal 2 more Damage.
-If these enemies are encountered, then there should only be a maximum of 2 of them at a time.
-( 2 -> 4 -> 6 -> 8 -> 10, etc)
+Base HP: 4 (Multiplies based on Damage Multiplier)
+Base Damage: 2 (Multiplies based on Damage Multiplier - Maxes out at 6)
+Information:
+	- Each turn it will attack the player.
+	- After each successful attack, its attack on the next turn will deal 2 more damage. This number does not change based on the difficulty.
+	- There should only be a maximum of 3 of these enemies in a single battle.
+	- These enemies are meant to be somewhat of a nuisance to the player. The more time they spend in this battle, the more difficult it becomes. The ultimate strategy is to go on an all out offensive right from the get-go to reduce the damage you'll take. However this will depend on how lucky you get with the cards that you draw.
 
 Relic:
 Name: Blood Strength
-Description: For each enemy defeated, increase Strength +2.
+Information:
+- For each enemy defeated, increase Strength +2.
 
