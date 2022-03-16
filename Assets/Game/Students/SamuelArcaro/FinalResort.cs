@@ -28,7 +28,7 @@ public class FinalResort : Card, ITargetSingleEnemy
             if (playerMana >= processedManaCost)
             {
                 ITakeDamage dmg = target.GetComponent<ITakeDamage>();
-				dmg.TakePiercingDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
+				dmg.TakeDamage(this.gameObject, currentProcessor.GetComponent<InterjectionProcessor>().CalculateFinalValue());
 				
                 playerMana.Value -= processedManaCost;
                 discardCardEvent.Raise(this.gameObject);
